@@ -1,0 +1,14 @@
+
+ul{
+    display: flex;
+    list-style: none;
+    height: 120px;
+    justify-content: space-around;
+    align-items: center;
+}
+li{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
