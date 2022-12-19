@@ -26,6 +26,7 @@
 }
 .produto_link{
     background-color: rgb(212, 249, 255);
+    font-weight: bolder;
     border: 1px solid #3498db;
     border-radius: 4px;
     color:#3498db;
