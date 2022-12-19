@@ -11,7 +11,24 @@ export default function Usuarios() {
   const [email, setEmail] = useState("");
   const [tipo, setTipo] = useState("");
   const [senha, setSenha] = useState("");
-  const url = "https://backendexpress-1fw51sr71-kibolino.vercel.app/";
+  const url = "https://backendexpress-a0trreaz5-kibolino.vercel.app/";
+  const [body, setBody] = useState({email:"",senha:""});
+  const inputChange =({target})=>{
+    const {name,value} = target
+    setBody({
+      ...body,
+      [name]: value
+    })
+  }
+  const onSubmit=()=>{
+    axios.post(url + "usuarios", body)
+    .then(({data})=>{
+      console.log(data)
+    })
+    .catch(({response})=>{
+      console.log(response)
+    })
+  }
   
 
   useEffect(() => {
@@ -102,25 +119,21 @@ export default function Usuarios() {
         <label htmlFor="email">E-mail</label>
         <input
               type="text"
-              name="txtNome"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              name="email"
+              value={body.email}
+              onChange={inputChange}
             />
         </div>
         <div className="form-usuario">
         <label htmlFor="password">Senha</label>
         <input
-              type="text"
-              name="txtEmail"
-              value={senha}
-              onChange={(e) => {
-                setSenha(e.target.value);
-              }}
+              type="password"
+              name="senha"
+              value={body.senha}
+              onChange={inputChange}
             />
         </div>
-        <button className="botao-usuario" type="button"  onClick={gravaDados}>
+        <button className="botao-usuario" type="button"  onClick={onSubmit}>
           Entrar
         </button>
         <button className="botao-usuario" type="button" onClick={novosDados}>
@@ -178,34 +191,7 @@ export default function Usuarios() {
       ) : (
         false
       )}
-      {usuarios
-        ? usuarios.map((item) => {
-            return (
-              <div key={item.id}>
-                <div>
-                  {" "}
-                  {item.id} - {item.nome} - {item.email} - {item.senha}{" "}
-                  <img
-                    alt="Editar"
-                    src={imgEdit}
-                    id={item.id}
-                    height={20}
-                    width={20}
-                    onClick={(e) => editarDados(item.id)}
-                  />
-                  <img
-                    alt="Apagar"
-                    src={imgDelet}
-                    id={item.id}
-                    height={20}
-                    width={20}
-                    onClick={(e) => apagarDados(item.id)}
-                  />
-                </div>
-              </div>
-            );
-          })
-        : false}
+      
     </div>
       
     
