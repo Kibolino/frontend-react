@@ -105,7 +105,7 @@ export default function Usuarios() {
               name="email"
               value={email}
               onChange={(e) => {
-              setEmail(e.target.value)
+              setEmail(e.target.value)}}
             
             />
         </div>
@@ -116,8 +116,8 @@ export default function Usuarios() {
               name="senha"
               value={senha}
               onChange={(e) => {
-              setSenha(e.target.value)  
-              
+              setSenha(e.target.value)}}  
+          
             />
         </div>
         <button className="botao-usuario" type="button" >
