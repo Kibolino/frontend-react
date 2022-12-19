@@ -1,26 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Menu.css';
+import "./Menu.css";
+import imgLogo from "./img/logo.png";
+
 
 export default function Menu() {
   return (
-    <header>
-      <nav>
-        <ul>
+    <header class="header" role="banner">
+    <div class="container">
+      <nav><ul>
+      <li>
+            <Link to="/">
+              <img src={imgLogo} alt="Farejador" className="logo" />{" "}
+            </Link>{" "}
+          </li>
+
           <li>
-            <Link to="/">Pag 1 </Link>{" "}
+            <Link to="/sobre"> Sobre </Link>
           </li>
           <li>
-            <Link to="/usuarios">Clientes</Link>
+            <Link to="/pessoas"> Entrar </Link>
           </li>
-          <li>
-            <Link to="/sobre"> Pag 3 </Link>
-          </li>
-          <li>
-            <Link to="/pessoas"> Pessoas </Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+        </ul></nav>
+    </div>
+  </header>
   );
 }
