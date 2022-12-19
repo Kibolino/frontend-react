@@ -178,6 +178,34 @@ export default function Usuarios() {
       ) : (
         false
       )}
+      {usuarios
+        ? usuarios.map((item) => {
+            return (
+              <div key={item.id}>
+                <div>
+                  {" "}
+                  {item.id} - {item.nome} - {item.email}{" "}
+                  <img
+                    alt="Editar"
+                    src={imgEdit}
+                    id={item.id}
+                    height={20}
+                    width={20}
+                    onClick={(e) => editarDados(item.id)}
+                  />
+                  <img
+                    alt="Apagar"
+                    src={imgDelet}
+                    id={item.id}
+                    height={20}
+                    width={20}
+                    onClick={(e) => apagarDados(item.id)}
+                  />
+                </div>
+              </div>
+            );
+          })
+        : false}
       
     </div>
       
