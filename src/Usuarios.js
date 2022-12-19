@@ -104,7 +104,9 @@ export default function Usuarios() {
               type="text"
               name="email"
               value={email}
-              
+              onChange={(e) => {
+              setEmail(e.target.value)
+            
             />
         </div>
         <div className="form-usuario">
@@ -113,6 +115,8 @@ export default function Usuarios() {
               type="password"
               name="senha"
               value={senha}
+              onChange={(e) => {
+              setSenha(e.target.value)  
               
             />
         </div>
