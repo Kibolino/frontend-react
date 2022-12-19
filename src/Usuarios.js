@@ -107,6 +107,7 @@ export default function Usuarios() {
       console.log("Preencha os campos");
     }
   }
+  console.log(usuarios);
   return (
     
     <div className="conteiner">
