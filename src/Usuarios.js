@@ -103,8 +103,8 @@ export default function Usuarios() {
         <input
               type="text"
               name="email"
-              value={body.email}
-              onChange={inputChange}
+              value={email}
+              
             />
         </div>
         <div className="form-usuario">
@@ -112,8 +112,8 @@ export default function Usuarios() {
         <input
               type="password"
               name="senha"
-              value={body.senha}
-              onChange={inputChange}
+              value={senha}
+              
             />
         </div>
         <button className="botao-usuario" type="button" >
