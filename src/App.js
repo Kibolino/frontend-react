@@ -1,10 +1,10 @@
 import './App.css';
-import Loja from './Farejador';
+import Farejador from './Farejador';
 
 function App() {
   return (
     <div className="App" >
-      <Loja/>
+      <Farejador/>
     </div>
   );
 }
