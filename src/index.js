@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Component1 from './Component1';
 import Menu from './Menu';
 import Sobre from './Sobre';
 import Usuarios from './Usuarios';
-import Carrinho from './Carrinho';
 import Footer from './Footer';
+import Farejador from './Farejador';
 
 
 
@@ -18,10 +17,9 @@ root.render(
   <Menu/>
   <Routes>
   <Route path="/" element={<App />} />
-    <Route path="usuarios" element={<Component1/>}/>
     <Route path="sobre" element={<Sobre/>}/>
     <Route path="pessoas" element={<Usuarios/>}/>
-    <Route path="carrinho" element={<Carrinho/>}/>
+    <Route path="farejador" element={<Farejador/>}/>
   </Routes>
   <Footer/>
   </BrowserRouter>
