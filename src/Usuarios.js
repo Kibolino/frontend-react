@@ -11,7 +11,7 @@ export default function Usuarios() {
   const [email, setEmail] = useState("");
   const [tipo, setTipo] = useState("");
   const [senha, setSenha] = useState("");
-  const url = "https://backendexpress-a0trreaz5-kibolino.vercel.app/";
+  const url = "https://backendexpress-kappa.vercel.app/";
   
   useEffect(() => {
     fetch(url + "usuarios")
