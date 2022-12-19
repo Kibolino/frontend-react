@@ -169,7 +169,7 @@ export default function Usuarios() {
             Cancelar
           </button>
           <button className="botao-usuario" type="button" onClick={gravaDados}>
-            Gravar
+            Criar
           </button>
           </div>
           </div>
