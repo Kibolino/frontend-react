@@ -7,6 +7,8 @@ import Component1 from './Component1';
 import Menu from './Menu';
 import Sobre from './Sobre';
 import Usuarios from './Usuarios';
+import Carrinho from './Carrinho';
+import Footer from './Footer';
 
 
 
@@ -19,7 +21,10 @@ root.render(
     <Route path="usuarios" element={<Component1/>}/>
     <Route path="sobre" element={<Sobre/>}/>
     <Route path="pessoas" element={<Usuarios/>}/>
+    <Route path="carrinho" element={<Carrinho/>}/>
   </Routes>
+  <Footer/>
   </BrowserRouter>
+  
 );
 
