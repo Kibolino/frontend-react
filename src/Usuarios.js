@@ -12,25 +12,7 @@ export default function Usuarios() {
   const [tipo, setTipo] = useState("");
   const [senha, setSenha] = useState("");
   const url = "https://backendexpress-a0trreaz5-kibolino.vercel.app/";
-  const [body, setBody] = useState({email:"",senha:""});
-  const inputChange =({target})=>{
-    const {name,value} = target
-    setBody({
-      ...body,
-      [name]: value
-    })
-  }
-  const onSubmit=()=>{
-    axios.post(url + "usuarios", body)
-    .then(({data})=>{
-      console.log(data)
-    })
-    .catch(({response})=>{
-      console.log(response)
-    })
-  }
   
-
   useEffect(() => {
     fetch(url + "usuarios")
       .then((response) => response.json())
@@ -134,7 +116,7 @@ export default function Usuarios() {
               onChange={inputChange}
             />
         </div>
-        <button className="botao-usuario" type="button"  onClick={onSubmit}>
+        <button className="botao-usuario" type="button" >
           Entrar
         </button>
         <button className="botao-usuario" type="button" onClick={novosDados}>
