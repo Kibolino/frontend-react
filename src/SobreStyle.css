@@ -1,0 +1,8 @@
+.conteiner{
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    height: auto;
+    width: auto;
+}
