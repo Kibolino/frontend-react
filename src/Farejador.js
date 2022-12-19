@@ -3,7 +3,7 @@ import "./FarejadorStyle.css";
 
 export default function Farejador() {
   const [data, setData] = useState([]);
-  const[pesquisa, setPesquisa] = useState('celular');
+  const[pesquisa, setPesquisa] = useState('');
 
 
   useEffect(() => {
