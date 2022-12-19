@@ -10,7 +10,9 @@ export default function Usuarios() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [tipo, setTipo] = useState("");
+  const [senha, setSenha] = useState("");
   const url = "https://backendexpress-1fw51sr71-kibolino.vercel.app/";
+  
 
   useEffect(() => {
     fetch(url + "usuarios")
@@ -27,14 +29,16 @@ export default function Usuarios() {
     setNome("");
     setEmail("");
     setTipo("");
+    setSenha("");
   }
   function editarDados(cod) {
     let usuario = usuarios.find((item) => item.id === cod);
-    const { id, nome, email } = usuario;
+    const { id, nome, email, senha } = usuario;
     setTipo("editar");
     setId(id);
     setNome(nome);
     setEmail(email);
+    setSenha(senha);
   }
   function apagarDados(cod) {
     axios.delete(url + "usuarios/" + cod).then(() => {
@@ -43,8 +47,8 @@ export default function Usuarios() {
     });
   }
   function atualizaListaComNovoUsuario(response) {
-    let { id, nome, email } = response.data;
-    let obj = { id: id, nome: nome, email: email };
+    let { id, nome, email, senha } = response.data;
+    let obj = { id: id, nome: nome, email: email, senha: senha };
     let users = usuarios;
     users.push(obj);
     setUsuarios(users);
@@ -56,16 +60,18 @@ export default function Usuarios() {
     let users = usuarios;
     users[index].nome = nome;
     users[index].email = email;
+    users[index].senha = senha;
     setUsuarios(users);
     limparDados("");
   }
   function gravaDados() {
-    if (nome !== "" && email !== "") {
+    if (nome !== "" && email !== "" && senha !== "") {
       if (tipo === "novo") {
         axios
           .post(url + "usuarios", {
             nome: nome,
             email: email,
+            senha: senha,
           })
           .then((response) => atualizaListaComNovoUsuario(response))
           .catch((err) => console.log(err));
@@ -75,6 +81,7 @@ export default function Usuarios() {
             id: id,
             nome: nome,
             email: email,
+            senha: senha,
           })
           .then((response) => atualizaListaUsuarioEditado(response))
           .catch((err) => console.log(err));
@@ -84,12 +91,53 @@ export default function Usuarios() {
     }
   }
   return (
-    <div>
-      <button type="button" onClick={novosDados}>
-        Novo
-      </button>
+    
+    <div className="conteiner">
+      {tipo === "" && (
+        <>
+        <div className="login-usuario">
+        <h1 className="titulo-usuario">Acessar Farejador</h1>
+  
+        <div className="form-usuario">
+        <label htmlFor="email">E-mail</label>
+        <input
+              type="text"
+              name="txtNome"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+        </div>
+        <div className="form-usuario">
+        <label htmlFor="password">Senha</label>
+        <input
+              type="text"
+              name="txtEmail"
+              value={senha}
+              onChange={(e) => {
+                setSenha(e.target.value);
+              }}
+            />
+        </div>
+        <button className="botao-usuario" type="button"  onClick={gravaDados}>
+          Entrar
+        </button>
+        <button className="botao-usuario" type="button" onClick={novosDados}>
+        Cria conta
+        </button>
+        </div>
+        
+        </>
+
+      )}
+     
       {tipo ? (
         <>
+        <div className="login-usuario">
+        <h1 className="titulo-usuario">Criar Farejador</h1>
+          <div className="form-usuario">
+          <label htmlFor="nome">Nome</label>
           <input
             type="text"
             name="txtNome"
@@ -98,6 +146,7 @@ export default function Usuarios() {
               setNome(e.target.value);
             }}
           />
+          <label htmlFor="email">E-mail</label>
           <input
             type="text"
             name="txtEmail"
@@ -106,24 +155,36 @@ export default function Usuarios() {
               setEmail(e.target.value);
             }}
           />
-          <button type="button" onClick={limparDados}>
+          <label htmlFor="senha">Senha</label>
+          <input
+            type="password"
+            name="txtEmail"
+            value={senha}
+            onChange={(e) => {
+              setSenha(e.target.value);
+            }}
+          />
+          <div className="flex">
+          <button className="botao-usuario" type="button" onClick={limparDados}>
             Cancelar
           </button>
-          <button type="button" onClick={gravaDados}>
+          <button className="botao-usuario" type="button" onClick={gravaDados}>
             Gravar
           </button>
+          </div>
+          </div>
+          </div>
         </>
       ) : (
         false
       )}
-
       {usuarios
         ? usuarios.map((item) => {
             return (
               <div key={item.id}>
                 <div>
                   {" "}
-                  {item.id} - {item.nome} - {item.email}{" "}
+                  {item.id} - {item.nome} - {item.email} - {item.senha}{" "}
                   <img
                     alt="Editar"
                     src={imgEdit}
@@ -146,5 +207,7 @@ export default function Usuarios() {
           })
         : false}
     </div>
+      
+    
   );
 }
